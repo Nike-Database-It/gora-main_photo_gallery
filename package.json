@@ -5,6 +5,7 @@
   "main": "/client/src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack -d --watch",
     "start": "nodemon server/server.js"
   },
   "repository": {
@@ -26,12 +27,19 @@
   "dependencies": {
     "express": "^4.16.4",
     "path": "^0.12.7",
-    "webpack": "^4.22.0"
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.4",
     "body-parser": "^1.18.3",
     "mongodb": "^3.1.8",
     "mongoose": "^5.3.6",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "webpack": "^4.22.0",
+    "webpack-cli": "^3.1.2"
   }
 }
