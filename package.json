@@ -1,0 +1,28 @@
+{
+  "name": "main_photo_gallery",
+  "version": "1.0.0",
+  "description": "Collection of all images displayed for a particular shoe",
+  "main": "/client/src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WARP-V/main_photo_gallery.git"
+  },
+  "keywords": [
+    "Nike",
+    "Jordan",
+    "shoes",
+    "images"
+  ],
+  "author": "Vignesh Balasundaram",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WARP-V/main_photo_gallery/issues"
+  },
+  "homepage": "https://github.com/WARP-V/main_photo_gallery#readme",
+  "dependencies": {
+    "webpack": "^4.22.0"
+  }
+}
