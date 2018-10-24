@@ -16,7 +16,7 @@ class Gallery extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/shoe:310806-408', {
+    fetch(`/shoe:${this.props.shoeID}`, {
       method: 'GET',
     }).then(rawData => {
       return rawData.json();
