@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Gallery from './components/Gallery.js'
 
 ReactDOM.render(
-  <h1>Hello World</h1>,
+  <Gallery />,
   document.getElementById('root')
 )
