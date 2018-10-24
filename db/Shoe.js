@@ -7,3 +7,7 @@ const shoeSchema = new mongoose.Schema({
   imageUrls: [String],
   color: String,
 })
+
+const Shoe = mongoose.model('Shoe', shoeSchema);
+
+module.exports = Shoe;
