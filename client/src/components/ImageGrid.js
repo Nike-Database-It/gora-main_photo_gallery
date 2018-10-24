@@ -1,11 +1,12 @@
 import React from 'react';
+import ImageRow from './ImageRow.js'
 
 const ImageGrid = (props) => {
   return (
-    <div>
+    <div className='image-grid'>
       {props.imgs.map((pair, i) => {
         return (
-          <div>{pair}</div>
+          <ImageRow key={i} pair={pair}/>
         )
       })}
     </div>
