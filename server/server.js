@@ -15,6 +15,9 @@ app.get('/shoe:shoeID', (req, res) => {
   var shoeID = req.params['shoeID'];
   shoeID = shoeID.substring(1, shoeID.length);
   Shoe.find({"shoeID": shoeID}, (err, shoe) => {
+    if (err) {
+      console.log(err);
+    }
     res.send(shoe);
   })
 })
