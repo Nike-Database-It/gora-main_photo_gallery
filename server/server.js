@@ -29,5 +29,5 @@ app.get('/shoe:shoeID', (req, res) => {
 // APP LISTENING PROTOCOL
 const PORT = 3131;
 app.listen(PORT, () => {
-  console.log(`>>>>>>>>>>>>>>>>>>>>> Express server listening on port ${PORT}...`);
+  console.log(`>>>>> Express server listening on port ${PORT}...`);
 })
