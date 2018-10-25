@@ -10,6 +10,9 @@ var app = express();
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
+app.use(parser.json());
+app.use(morgan('dev'));
+
 // SERVER METHODS //
 app.get('/shoe:shoeID', (req, res) => {
   var shoeID = req.params['shoeID'];
@@ -26,5 +29,5 @@ app.get('/shoe:shoeID', (req, res) => {
 // APP LISTENING PROTOCOL
 const PORT = 3131;
 app.listen(PORT, () => {
-  console.log(`Express server listening on port ${PORT}...`);
+  console.log(`>>>>>>>>>>>>>>>>>>>>> Express server listening on port ${PORT}...`);
 })

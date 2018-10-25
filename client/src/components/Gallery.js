@@ -8,9 +8,7 @@ class Gallery extends React.Component {
     super(props);
 
     this.state = {
-      color: '',
       images: [],
-      name: '',
       shoeID: '',
     }
   }
@@ -23,8 +21,6 @@ class Gallery extends React.Component {
     }).then(res => {
       var shoe = res[0];
       var newState = {
-        color: shoe.color,
-        name: shoe.name,
         shoeID: shoe.shoeID
       }
       var shoeImages = [];
