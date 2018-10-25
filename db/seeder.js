@@ -163,11 +163,19 @@ const shoeLinks = [
   'https://s3-us-west-1.amazonaws.com/nike-shoe-image-catalog/Air+Jordan+XXXII/AA1253-400/shoe_8.jpg']
 ]
 
+var shoeArr = []
 for (var i = 0; i < ids.length; i++) {
   var idx = Math.floor(Math.random() * shoeLinks.length);
-  var newShoe = new Shoe({shoeID: ids[i], imageUrls: shoeLinks[idx]});
-  newShoe.save();
+  shoeArr.push({shoeID: ids[i], imageUrls: shoeLinks[idx]});
 }
 
-console.log('FINISHED SEEDING DATABASE');
+Shoe.insertMany(shoeArr, (err, docs) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('FINISHED SEEDING DATABASE');
+  }
+  process.exit();
+})
+
 return;
