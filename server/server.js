@@ -8,7 +8,7 @@ const Shoe = require('../db/Shoe.js');
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 app.use(parser.json());
 app.use(morgan('dev'));

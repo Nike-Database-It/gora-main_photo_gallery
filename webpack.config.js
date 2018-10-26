@@ -4,7 +4,7 @@ module.exports = {
   entry: path.join(__dirname, './client/src/index.jsx'),
   output: {
     filename: 'mpg_bundle.js',
-    path: path.join(__dirname, './client/dist'),
+    path: path.join(__dirname, './public'),
   },
   resolve: {
     extensions: ['.js', '.jsx'],
