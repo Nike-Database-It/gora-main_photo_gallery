@@ -2,7 +2,7 @@
 node_modules
 
 # INGORE WEBPACK BUNDLE
-client/dist/mpg_bundle.js
+public/mpg_bundle.js
 
 
 # IGNORE ESLINT

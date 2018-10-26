@@ -12,6 +12,9 @@ class Gallery extends React.Component {
   componentDidMount() {
     const { shoeID } = this.state;
     axios.get(`/shoes/:${shoeID}`)
+      .catch((err) => {
+        console.log(err);
+      })
       .then(data => data.data[0])
       .then(({ imageUrls }) => {
         const imgs = imageUrls;
