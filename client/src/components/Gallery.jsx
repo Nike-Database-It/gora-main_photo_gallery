@@ -1,6 +1,8 @@
 import React from 'react';
 import ImageGrid from './ImageGrid.jsx';
 
+const axios = require('axios');
+
 class Gallery extends React.Component {
   constructor({ shoeID }) {
     super({ shoeID });
@@ -22,7 +24,7 @@ class Gallery extends React.Component {
         };
         const shoeImages = [];
         let temp = [];
-        for (let i = 0; i < shoe.imageUrls.length; i++) {
+        for (let i = 0; i < shoe.imageUrls.length; i += 1) {
           if (temp.length === 0) {
             temp.push(shoe.imageUrls[i]);
           } else {
