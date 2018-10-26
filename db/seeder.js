@@ -164,7 +164,7 @@ const shoeLinks = [
 ];
 
 const shoeArr = [];
-for (let i = 0; i < ids.length; i++) {
+for (let i = 0; i < ids.length; i += 1) {
   const idx = Math.floor(Math.random() * shoeLinks.length);
   shoeArr.push({ shoeID: ids[i], imageUrls: shoeLinks[idx] });
 }

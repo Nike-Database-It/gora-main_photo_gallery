@@ -11,24 +11,21 @@ class Gallery extends React.Component {
 
   componentDidMount() {
     const { shoeID } = this.state;
-    fetch(`/shoe:${shoeID}`, {
-      method: 'GET',
-    })
-      .then(data => data.json())
-      .then((res) => {
-        const shoe = res[0];
-        const imgs = res[1];
+    axios.get(`/shoe:${shoeID}`)
+      .then(data => data.data[0])
+      .then(({ imageUrls }) => {
+        const imgs = imageUrls;
         const newState = {
-          shoeID: shoe.shoeID,
+          shoeID,
           images: imgs,
         };
         const shoeImages = [];
         let temp = [];
-        for (let i = 0; i < shoe.imageUrls.length; i += 1) {
+        for (let i = 0; i < imageUrls.length; i += 1) {
           if (temp.length === 0) {
-            temp.push(shoe.imageUrls[i]);
+            temp.push(imageUrls[i]);
           } else {
-            temp.push(shoe.imageUrls[i]);
+            temp.push(imageUrls[i]);
             shoeImages.push(temp);
             temp = [];
           }
