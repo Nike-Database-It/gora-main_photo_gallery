@@ -1,5 +1,5 @@
 import React from 'react';
-import ImageGrid from './ImageGrid.jsx';
+import ImageGrid from './ImageGrid';
 
 const axios = require('axios');
 

@@ -6,6 +6,9 @@ module.exports = {
     filename: 'mpg_bundle.js',
     path: path.join(__dirname, './client/dist'),
   },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
   module: {
     rules: [
       {

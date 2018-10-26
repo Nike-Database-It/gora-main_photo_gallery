@@ -1,5 +1,6 @@
 import React from 'react';
-import ImageRow from './ImageRow.jsx';
+import PropTypes from 'prop-types';
+import ImageRow from './ImageRow';
 
 const ImageGrid = ({ imgs }) => (
   <div className="image-grid">
@@ -8,5 +9,13 @@ const ImageGrid = ({ imgs }) => (
     ))}
   </div>
 );
+
+ImageGrid.propTypes = {
+  imgs: PropTypes.arrayOf(PropTypes.string),
+};
+
+ImageGrid.defaultProps = {
+  imgs: [],
+};
 
 export default ImageGrid;
