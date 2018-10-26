@@ -10,6 +10,7 @@ module.exports = {
     "no-console": 0
   },
   "env": {
-    "browser": true
+    "browser": true,
+    "jest": true
   }
 };
