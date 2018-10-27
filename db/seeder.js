@@ -168,12 +168,17 @@ for (let i = 0; i < ids.length; i += 1) {
   const idx = Math.floor(Math.random() * shoeLinks.length);
   shoeArr.push({ shoeID: ids[i], imageUrls: shoeLinks[idx] });
 }
-
-Shoe.insertMany(shoeArr, (err) => {
-  if (err) {
-    console.log(err);
+Shoe.deleteMany({}, (e) => {
+  if (e) {
+    console.log(e);
   } else {
-    console.log('FINISHED SEEDING DATABASE');
+    Shoe.insertMany(shoeArr, (err, docs) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(`>>>>> finished seeding database with ${docs.length} shoes...`);
+      }
+      process.exit();
+    });
   }
-  process.exit();
 });
