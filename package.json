@@ -4,7 +4,7 @@
   "description": "Collection of all images displayed for a particular shoe",
   "main": "/client/src/index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --detectOpenHandles",
     "build": "webpack -d --watch",
     "start": "nodemon server/server.js",
     "seed": "node ./db/seeder.js",

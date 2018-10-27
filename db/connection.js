@@ -6,7 +6,7 @@ const db = mongoose.connect(mongoUri, { useNewUrlParser: true, useCreateIndex: t
 db.catch((err) => {
   console.log(err);
 }).then(() => {
-  console.log('>>>>>> Connected to MongoDB...');
+  console.log('>>>>> Connected to MongoDB...');
 });
 
 module.exports = db;
