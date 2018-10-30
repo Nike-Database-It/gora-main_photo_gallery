@@ -11,11 +11,11 @@ const ImageGrid = ({ imgs }) => (
 );
 
 ImageGrid.propTypes = {
-  imgs: PropTypes.arrayOf(PropTypes.string),
+  imgs: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
 };
 
 ImageGrid.defaultProps = {
-  imgs: [],
+  imgs: [[]],
 };
 
 export default ImageGrid;

@@ -24,16 +24,16 @@ class Gallery extends React.Component {
         };
         const shoeImages = [];
         let temp = [];
+        console.log(imageUrls);
         for (let i = 0; i < imageUrls.length; i += 1) {
-          if (temp.length === 0) {
-            temp.push(imageUrls[i]);
-          } else {
-            temp.push(imageUrls[i]);
+          temp.push(imageUrls[i]);
+          if (i % 2 !== 0 || i === imageUrls.length - 1) {
             shoeImages.push(temp);
             temp = [];
           }
         }
         newState.images = shoeImages;
+        console.log('shoeImages', shoeImages);
         this.setState(newState);
       });
   }
