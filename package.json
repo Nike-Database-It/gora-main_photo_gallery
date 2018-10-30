@@ -5,7 +5,8 @@
   "main": "/client/src/index.js",
   "scripts": {
     "test": "jest --detectOpenHandles --coverage",
-    "build": "webpack -d --watch",
+    "watch": "webpack -d --watch",
+    "build": "webpack -d",
     "start": "nodemon server/server.js",
     "seed": "node ./db/seeder.js",
     "lint": "eslint --ignore-path .gitignore . --fix"
