@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: path.join(__dirname, './client/src/index.jsx'),
+  entry: path.join(__dirname, './src/index.jsx'),
   output: {
     filename: 'mpg_bundle.js',
     path: path.join(__dirname, './public'),
@@ -13,7 +13,7 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?/,
-        include: path.join(__dirname, '/client/src'),
+        include: path.join(__dirname, '/src'),
         loader: 'babel-loader',
         options: {
           presets: ['@babel/preset-env', '@babel/preset-react'],

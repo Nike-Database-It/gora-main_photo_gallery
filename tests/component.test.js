@@ -6,9 +6,9 @@ import {
 import Adapter from 'enzyme-adapter-react-16';
 import React from 'react';
 
-import ImageRow from '../client/src/components/ImageRow';
-import ImageGrid from '../client/src/components/ImageGrid';
-import Gallery from '../client/src/components/Gallery';
+import ImageRow from '../src/components/ImageRow';
+import ImageGrid from '../src/components/ImageGrid';
+import Gallery from '../src/components/Gallery';
 
 const sinon = require('sinon');
 const Promise = require('bluebird');
