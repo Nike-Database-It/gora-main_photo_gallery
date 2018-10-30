@@ -4,11 +4,8 @@ test('properly empties the database', () => {
   Shoe.deleteMany({})
     .then(() => {
       Shoe.countDocuments({})
-        .then((c) => {
+        .then((err, c) => {
           expect(c).toBe(0);
-        })
-        .catch((err) => {
-          console.log(err);
         });
     });
 });

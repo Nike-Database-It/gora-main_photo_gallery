@@ -7,3 +7,6 @@ public/mpg_bundle.js
 
 # IGNORE ESLINT
 .eslintrc.js
+
+# TEST COVERAGE INFORMATION
+coverage
