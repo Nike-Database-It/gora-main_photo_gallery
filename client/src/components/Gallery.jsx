@@ -1,15 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ImageGrid from './ImageGrid';
 
 const axios = require('axios');
 
 class Gallery extends React.Component {
-  constructor({ shoeID }) {
-    super({ shoeID });
-    this.state = { images: [], shoeID };
+  constructor(props) {
+    super(props);
+    this.state = { images: [], shoeID: props.shoeID };
   }
 
   componentDidMount() {
+    this.getShoeInformationFromDB();
+  }
+
+  getShoeInformationFromDB() {
     const { shoeID } = this.state;
     axios.get(`/shoes/:${shoeID}`)
       .catch((err) => {
@@ -24,7 +29,6 @@ class Gallery extends React.Component {
         };
         const shoeImages = [];
         let temp = [];
-        console.log(imageUrls);
         for (let i = 0; i < imageUrls.length; i += 1) {
           temp.push(imageUrls[i]);
           if (i % 2 !== 0 || i === imageUrls.length - 1) {
@@ -33,7 +37,6 @@ class Gallery extends React.Component {
           }
         }
         newState.images = shoeImages;
-        console.log('shoeImages', shoeImages);
         this.setState(newState);
       });
   }
@@ -49,5 +52,13 @@ class Gallery extends React.Component {
     );
   }
 }
+
+Gallery.propTypes = {
+  shoeID: PropTypes.string,
+};
+
+Gallery.defaultProps = {
+  shoeID: '310805-408',
+};
 
 export default Gallery;
