@@ -1,13 +1,17 @@
 /* eslint react/jsx-filename-extension: [0] */
 
 import {
-  shallow, render, configure,
+  shallow, mount, render, configure,
 } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import React from 'react';
 
 import ImageRow from '../client/src/components/ImageRow';
 import ImageGrid from '../client/src/components/ImageGrid';
+import Gallery from '../client/src/components/Gallery';
+
+const sinon = require('sinon');
+const Promise = require('bluebird');
 
 configure({ adapter: new Adapter() });
 
@@ -42,7 +46,7 @@ describe('Grid of images in "ImageGrid.jsx"', () => {
     expect(wrapperOne.exists()).toBeTruthy();
   });
 
-  const images = ['https://s3-us-west-1.amazonaws.com/nike-shoe-image-catalog/Jordan+88+Racer/AV1200-100/shoe_1.jpg', 'https://s3-us-west-1.amazonaws.com/nike-shoe-image-catalog/Jordan+88+Racer/AV1200-100/shoe_2.jpg', 'https://s3-us-west-1.amazonaws.com/nike-shoe-image-catalog/Jordan+88+Racer/AV1200-100/shoe_3.jpg', 'https://s3-us-west-1.amazonaws.com/nike-shoe-image-catalog/Jordan+88+Racer/AV1200-100/shoe_4.jpg', 'https://s3-us-west-1.amazonaws.com/nike-shoe-image-catalog/Jordan+88+Racer/AV1200-100/shoe_5.jpg', 'https://s3-us-west-1.amazonaws.com/nike-shoe-image-catalog/Jordan+88+Racer/AV1200-100/shoe_6.jpg'];  
+  const images = ['https://s3-us-west-1.amazonaws.com/nike-shoe-image-catalog/Jordan+88+Racer/AV1200-100/shoe_1.jpg', 'https://s3-us-west-1.amazonaws.com/nike-shoe-image-catalog/Jordan+88+Racer/AV1200-100/shoe_2.jpg', 'https://s3-us-west-1.amazonaws.com/nike-shoe-image-catalog/Jordan+88+Racer/AV1200-100/shoe_3.jpg', 'https://s3-us-west-1.amazonaws.com/nike-shoe-image-catalog/Jordan+88+Racer/AV1200-100/shoe_4.jpg', 'https://s3-us-west-1.amazonaws.com/nike-shoe-image-catalog/Jordan+88+Racer/AV1200-100/shoe_5.jpg', 'https://s3-us-west-1.amazonaws.com/nike-shoe-image-catalog/Jordan+88+Racer/AV1200-100/shoe_6.jpg'];
   for (let i = 0; i < images.length; i += 1) {
     const temp = [];
     let pair = [];
@@ -58,4 +62,30 @@ describe('Grid of images in "ImageGrid.jsx"', () => {
       expect(wrapper.find('img').length).toBe(i + 1);
     });
   }
+
+  it('should use the default props when no "imgs" are provided', () => {
+    const wrapperTwo = render(<ImageGrid />);
+    expect(wrapperTwo.find('img').length).toBe(1);
+  });
+});
+
+describe('Functionality of Main Image Gallery component', () => {
+  const ids = ['310805-408', '310806-408', '310806-002', '305381-113', '852542-306', '554724-062', '554724-113', '554724-071', '554724-610', '554724-050'];
+
+  it('should call componentDidMount when component is mounted', () => {
+    sinon.spy(Gallery.prototype, 'componentDidMount');
+    for (let i = 0; i < ids.length; i += 1) {
+      mount(<Gallery shoeID={ids[i]} />);
+      expect(Gallery.prototype.componentDidMount.callCount).toBe(i + 1);
+    }
+  });
+
+  it('should get information from database when provided with valid shoeID', () => {
+    const wrapper = shallow(<Gallery shoeID={ids[0]} />);
+    const getShoeInfo = Promise.promisify(wrapper.instance().getShoeInformationFromDB);
+    getShoeInfo()
+      .then(() => {
+        expect(wrapper.state().props('images').length !== 0);
+      });
+  });
 });

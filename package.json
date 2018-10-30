@@ -4,7 +4,7 @@
   "description": "Collection of all images displayed for a particular shoe",
   "main": "/client/src/index.js",
   "scripts": {
-    "test": "jest --detectOpenHandles --coverage",
+    "test": "jest --detectOpenHandles --coverage --forceExit",
     "watch": "webpack -d --watch",
     "build": "webpack -d",
     "start": "nodemon server/server.js",
@@ -68,6 +68,7 @@
     "jest": "^23.6.0",
     "mongodb": "^3.1.8",
     "regenerator-runtime": "^0.12.1",
+    "sinon": "^7.1.0",
     "webpack": "^4.22.0",
     "webpack-cli": "^3.1.2"
   }

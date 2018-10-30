@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const Shoe = require('./Shoe.js');
 
 const ids = ['310805-408', '310806-408', '310806-002', '305381-113', '852542-306', '554724-062', '554724-113', '554724-071', '554724-610', '554724-050',
@@ -178,7 +179,7 @@ Shoe.deleteMany({}, (e) => {
       } else {
         console.log(`>>>>> finished seeding database with ${docs.length} shoes...`);
       }
-      process.exit();
+      mongoose.connection.close();
     });
   }
 });
