@@ -1,3 +1,17 @@
+.photo-gallery {
+  margin-left: 232.5px;
+}
+
+.pdp-6-up {
+  width: 984px;
+  margin: 44px -8px 0px 4px;
+  padding: 0px 48px 0px 44px;
+}
+
+.image-row {
+  width: fit-content;
+}
+
 .col_1, .col_2 {
   display: inline-block;
   padding: 5px;
@@ -6,4 +20,11 @@
 
 img:hover {
   cursor:pointer;
+}
+
+.photo_grid_item {
+  display: inline-block;
+  height: flex;
+  width: 45%;
+  max-width: 45%;
 }

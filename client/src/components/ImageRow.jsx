@@ -4,14 +4,10 @@ import PropTypes from 'prop-types';
 
 const ImageRow = ({ pair }) => (
   <div className="image-row">
-    <div className="col_1">
-      <img alt="Not found" src={pair[0]} width="250" />
-    </div>
+    <img className="photo_grid_item col_1" alt="Not found" src={pair[0]} width="250" />
     {pair[1] !== undefined
       ? (
-        <div className="col_2">
-          <img alt="Not found" src={pair[1]} width="250" />
-        </div>
+        <img className="photo_grid_item col_2" alt="Not found" src={pair[1]} width="250" />
       ) : null
     }
   </div>
