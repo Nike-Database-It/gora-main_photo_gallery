@@ -27,7 +27,7 @@ test('properly adds documents to the database', (done) => {
 });
 
 describe('Check for proper seeding of database', () => {
-  it('seeded the database with 122 shoes', async (done) => {
+  it('seeded the database with 122 shoes', (done) => {
     seed(() => {
       Shoe.countDocuments({}, (error, count) => {
         if (error) {
