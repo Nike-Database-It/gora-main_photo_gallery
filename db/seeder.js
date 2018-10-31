@@ -169,17 +169,22 @@ for (let i = 0; i < ids.length; i += 1) {
   const idx = Math.floor(Math.random() * shoeLinks.length);
   shoeArr.push({ shoeID: ids[i], imageUrls: shoeLinks[idx] });
 }
-Shoe.deleteMany({}, (e) => {
-  if (e) {
-    console.log(e);
-  } else {
-    Shoe.insertMany(shoeArr, (err, docs) => {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log(`>>>>> finished seeding database with ${docs.length} shoes...`);
-      }
-      mongoose.connection.close();
-    });
-  }
-});
+
+const seed = (callback = () => { mongoose.connection.close(); }) => {
+  Shoe.deleteMany({}, (e) => {
+    if (e) {
+      console.log(e);
+    } else {
+      Shoe.insertMany(shoeArr, (err, docs) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(`>>>>> finished seeding database with ${docs.length} shoes...`);
+        }
+        callback();
+      });
+    }
+  });
+};
+
+module.exports = seed;

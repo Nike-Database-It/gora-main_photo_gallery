@@ -81,11 +81,6 @@ describe('Functionality of Main Image Gallery component', () => {
   });
 
   it('should get information from database when provided with valid shoeID', () => {
-    const wrapper = shallow(<Gallery shoeID={ids[0]} />);
-    const getShoeInfo = Promise.promisify(wrapper.instance().getShoeInformationFromDB);
-    getShoeInfo()
-      .then(() => {
-        expect(wrapper.state().props('images').length !== 0);
-      });
+
   });
 });

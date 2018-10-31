@@ -4,11 +4,11 @@
   "description": "Collection of all images displayed for a particular shoe",
   "main": "/src/index.js",
   "scripts": {
-    "test": "jest --detectOpenHandles --coverage --forceExit",
+    "test": "jest --detectOpenHandles --coverage",
     "watch": "webpack -d --watch",
     "build": "webpack -d",
     "start": "nodemon server/server.js",
-    "seed": "node ./db/seeder.js",
+    "seed": "node -e 'require(\"./db/seeder.js\")()'",
     "lint": "eslint --ignore-path .gitignore . --fix"
   },
   "jest": {
