@@ -11,11 +11,11 @@ class Gallery extends React.Component {
   }
 
   componentDidMount() {
-    this.getShoeInformationFromDB();
+    const { shoeID } = this.state;
+    this.getShoeInformationFromDB(shoeID);
   }
 
-  getShoeInformationFromDB() {
-    const { shoeID } = this.state;
+  getShoeInformationFromDB(shoeID) {
     axios.get(`/shoes/:${shoeID}`)
       .catch((err) => {
         console.log(err);

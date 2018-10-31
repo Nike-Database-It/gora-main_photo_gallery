@@ -11,7 +11,6 @@ import ImageGrid from '../src/components/ImageGrid';
 import Gallery from '../src/components/Gallery';
 
 const sinon = require('sinon');
-const Promise = require('bluebird');
 
 configure({ adapter: new Adapter() });
 
@@ -78,14 +77,5 @@ describe('Functionality of Main Image Gallery component', () => {
       mount(<Gallery shoeID={ids[i]} />);
       expect(Gallery.prototype.componentDidMount.callCount).toBe(i + 1);
     }
-  });
-
-  it('should get information from database when provided with valid shoeID', () => {
-    const wrapper = shallow(<Gallery shoeID={ids[0]} />);
-    const getShoeInfo = Promise.promisify(wrapper.instance().getShoeInformationFromDB);
-    getShoeInfo()
-      .then(() => {
-        expect(wrapper.state().props('images').length !== 0);
-      });
   });
 });

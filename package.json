@@ -8,7 +8,7 @@
     "watch": "webpack -d --watch",
     "build": "webpack -d",
     "start": "nodemon server/server.js",
-    "seed": "node ./db/seeder.js",
+    "seed": "node -e 'require(\"./db/seeder.js\")()'",
     "lint": "eslint --ignore-path .gitignore . --fix"
   },
   "jest": {
@@ -66,6 +66,7 @@
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
     "jest": "^23.6.0",
+    "jest-mock-axios": "^2.1.11",
     "mongodb": "^3.1.8",
     "regenerator-runtime": "^0.12.1",
     "sinon": "^7.1.0",
