@@ -71,6 +71,7 @@ describe('Grid of images in "ImageGrid.jsx"', () => {
 });
 
 describe('Functionality of Main Image Gallery component', () => {
+  window.axios = mockAxios;
   const ids = ['310805-408', '310806-408', '310806-002', '305381-113', '852542-306', '554724-062', '554724-113', '554724-071', '554724-610', '554724-050'];
 
   it('should call componentDidMount when component is mounted', () => {
@@ -82,8 +83,7 @@ describe('Functionality of Main Image Gallery component', () => {
   });
 
   it('should get shoe information from database on mount', async () => {
-    window.axios = mockAxios;
-    const wrapper = await shallow(<Gallery shoeID={ids[0]} />);
-    expect(wrapper.state('images')).toEqual([]);
+    await shallow(<Gallery shoeID={ids[0]} />);
+    expect(mockAxios.get.mock.calls.length).toBe(11);
   });
 });
