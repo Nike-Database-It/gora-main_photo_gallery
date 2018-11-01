@@ -171,19 +171,11 @@ for (let i = 0; i < ids.length; i += 1) {
 }
 
 const seed = (callback = () => { mongoose.connection.close(); }) => {
-  Shoe.deleteMany({}, (e) => {
-    if (e) {
-      console.log(e);
-    } else {
-      Shoe.insertMany(shoeArr, (err, docs) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log(`>>>>> finished seeding database with ${docs.length} shoes...`);
-        }
-        callback();
-      });
-    }
+  Shoe.deleteMany({}, () => {
+    Shoe.insertMany(shoeArr, (err, docs) => {
+      console.log(`>>>>> finished seeding database with ${docs.length} shoes...`);
+      callback();
+    });
   });
 };
 

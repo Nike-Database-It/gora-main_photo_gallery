@@ -11,16 +11,6 @@
     "seed": "node -e 'require(\"./db/seeder.js\")()'",
     "lint": "eslint --ignore-path .gitignore . --fix"
   },
-  "jest": {
-    "verbose": true,
-    "moduleFileExtensions": [
-      "js",
-      "jsx"
-    ],
-    "moduleDirectories": [
-      "node_modules"
-    ]
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/WARP-V/main_photo_gallery.git"

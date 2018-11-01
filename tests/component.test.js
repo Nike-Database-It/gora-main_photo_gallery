@@ -12,6 +12,8 @@ import Gallery from '../src/components/Gallery';
 
 const sinon = require('sinon');
 
+const mockAxios = require('./__mocks__/axios');
+
 configure({ adapter: new Adapter() });
 
 describe('Single row of images in "ImageRow.jsx"', () => {
@@ -77,5 +79,11 @@ describe('Functionality of Main Image Gallery component', () => {
       mount(<Gallery shoeID={ids[i]} />);
       expect(Gallery.prototype.componentDidMount.callCount).toBe(i + 1);
     }
+  });
+
+  it('should get shoe information from database on mount', async () => {
+    window.axios = mockAxios;
+    const wrapper = await shallow(<Gallery shoeID={ids[0]} />);
+    expect(wrapper.state('images')).toEqual([]);
   });
 });
