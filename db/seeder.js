@@ -177,7 +177,7 @@ const seed = (callback = () => { mongoose.connection.close(); }) => {
     }
     Shoe.insertMany(shoeArr, (error, docs) => {
       if (error) {
-        console.log(err);
+        console.log(error);
       }
       console.log(`>>>>> finished seeding database with ${docs.length} shoes...`);
       callback();

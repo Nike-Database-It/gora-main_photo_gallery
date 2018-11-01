@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const mongoUri = 'mongodb://localhost/nikeFEC';
+const mongoUri = 'mongodb://localhost/nikeFEC_mpg';
 
 const db = mongoose.connect(mongoUri, { useNewUrlParser: true, useCreateIndex: true });
 db.catch((err) => {
