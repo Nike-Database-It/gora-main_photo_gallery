@@ -171,8 +171,14 @@ for (let i = 0; i < ids.length; i += 1) {
 }
 
 const seed = (callback = () => { mongoose.connection.close(); }) => {
-  Shoe.deleteMany({}, () => {
-    Shoe.insertMany(shoeArr, (err, docs) => {
+  Shoe.deleteMany({}, (err) => {
+    if (err) {
+      console.log(err);
+    }
+    Shoe.insertMany(shoeArr, (error, docs) => {
+      if (error) {
+        console.log(err);
+      }
       console.log(`>>>>> finished seeding database with ${docs.length} shoes...`);
       callback();
     });
