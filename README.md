@@ -19,8 +19,12 @@
 ## Usage
 
 > Created by Vignesh Balasundaram
+
 > All rights reserved. Liscence: ISC
+
 > Install the npm dependencies and seed the database before building webpack bundle
+
+> Runs on server port 3131
 
 ## Requirements
 
