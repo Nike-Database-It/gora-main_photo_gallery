@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
 const ImageRow = ({ pair }) => (
   <div className="image-row">
     <img className="photo_grid_item col_1" alt="Not found" src={pair[0]} width="250" />
