@@ -16,7 +16,7 @@ class Gallery extends React.Component {
   }
 
   getShoeInformationFromDB(shoeID) {
-    axios.get(`/shoes/:${shoeID}`)
+    axios.get(`/:${shoeID}/:mpg`)
       .catch((err) => {
         console.log(err);
       })

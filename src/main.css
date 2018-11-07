@@ -1,24 +1,24 @@
-.pdp-6-up {
+#mpg .pdp-6-up {
   width: 984px;
   margin: 44px -8px 0px 4px;
   padding: 0px 48px 0px 44px;
 }
 
-.image-row {
+#mpg .image-row {
   width: 984px;
 }
 
-.col_1, .col_2 {
+#mpg .col_1, .col_2 {
   display: inline-block;
   padding: 5px;
   padding-bottom: 0px;
 }
 
-img:hover {
+#mpg img:hover {
   cursor:pointer;
 }
 
-.photo_grid_item {
+#mpg .photo_grid_item {
   display: inline-block;
   height: flex;
   width: 45%;

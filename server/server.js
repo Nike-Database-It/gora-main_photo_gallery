@@ -14,7 +14,7 @@ app.use(parser.json());
 app.use(morgan('dev'));
 
 // SERVER METHODS //
-app.get('/shoes/:shoeID', ({ params }, res) => {
+app.get('/:shoeID/:mpg', ({ params }, res) => {
   const id = params.shoeID;
   const shoeID = id.substring(1, id.length);
   Shoe.find({ shoeID }, (err, shoe) => {
