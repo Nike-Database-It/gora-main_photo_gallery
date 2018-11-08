@@ -7,9 +7,9 @@ const axios = require('axios');
 class Gallery extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
-      images: [], 
-      shoeID: '310805-408' 
+    this.state = {
+      images: [],
+      shoeID: props.shoeID,
     };
   }
 
