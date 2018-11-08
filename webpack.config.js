@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
   entry: path.join(__dirname, './src/index.jsx'),
   output: {
-    filename: 'mpg_bundle.js',
+    filename: 'bundle.js',
     path: path.join(__dirname, './public'),
   },
   resolve: {

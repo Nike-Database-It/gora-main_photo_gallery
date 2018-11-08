@@ -7,7 +7,10 @@ const axios = require('axios');
 class Gallery extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { images: [], shoeID: props.shoeID };
+    this.state = { 
+      images: [], 
+      shoeID: '310805-408' 
+    };
   }
 
   componentDidMount() {
@@ -16,7 +19,7 @@ class Gallery extends React.Component {
   }
 
   getShoeInformationFromDB(shoeID) {
-    axios.get(`/:${shoeID}/:mpg`)
+    axios.get(`/:${shoeID}/images`)
       .catch((err) => {
         console.log(err);
       })
@@ -27,16 +30,16 @@ class Gallery extends React.Component {
           shoeID,
           images: imgs,
         };
-        const shoeImages = [];
-        let temp = [];
-        for (let i = 0; i < imageUrls.length; i += 1) {
-          temp.push(imageUrls[i]);
-          if (i % 2 !== 0 || i === imageUrls.length - 1) {
-            shoeImages.push(temp);
-            temp = [];
-          }
-        }
-        newState.images = shoeImages;
+        // const shoeImages = [];
+        // for (let i = 0; i < imageUrls.length; i += 1) {
+        //   shoeImages.push
+        //   // temp.push(imageUrls[i]);
+        //   // if (i % 2 !== 0 || i === imageUrls.length - 1) {
+        //   //   shoeImages.push(temp);
+        //   //   temp = [];
+        //   // }
+        // }
+        // newState.images = shoeImages;
         this.setState(newState);
       });
   }
@@ -44,9 +47,15 @@ class Gallery extends React.Component {
   render() {
     const { images } = this.state;
     return (
-      <div className="photo-gallery">
+      <div id="photo-gallery">
         <div className="photo-grid">
-          <ImageGrid imgs={images} />
+          {
+            images.map(link => 
+              <div key={link} className="image-holder">
+                <img className="photo_grid_item col_1" alt="" src={link} />
+              </div>
+            )
+          }
         </div>
       </div>
     );
