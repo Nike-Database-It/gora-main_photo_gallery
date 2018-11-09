@@ -12,6 +12,8 @@ COPY . /src/app
 
 # Does your app have any dependencies that should be installed?
 RUN npm install
+RUN npm run build
+RUN npm run seed
 
 # What port will the container talk to the outside world with once created?
 EXPOSE 3005

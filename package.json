@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --detectOpenHandles --coverage --forceExit",
     "watch": "webpack -d --watch",
-    "build": "webpack -d",
+    "build": "webpack -p",
     "start": "node server/server.js",
     "seed": "node -e 'require(\"./db/seeder.js\")()'",
     "lint": "eslint --ignore-path .gitignore . --fix"
