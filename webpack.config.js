@@ -1,4 +1,5 @@
 const path = require('path');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
   entry: path.join(__dirname, './src/index.jsx'),
@@ -6,6 +7,9 @@ module.exports = {
     filename: 'mpg_bundle.js',
     path: path.join(__dirname, './public'),
   },
+  plugins: [
+    new CompressionPlugin(),
+  ],
   resolve: {
     extensions: ['.js', '.jsx'],
   },
