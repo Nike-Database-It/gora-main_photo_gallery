@@ -58,3 +58,13 @@ npm run seed
 npm run build
 npm start
 ```
+
+### Endpoints
+
+| Action    | Method | Endpoint                                              | Purpose          |
+|-----------|--------|-------------------------------------------------------|------------------|
+| Create    | POST   | /api/shoes/:shoeID/images                             | Insert new image |
+| Read(All) | GET    | /api/shoes/:shoeID/images                             | Get all images   |
+| Read(One) | GET    | /api/shoes/:shoeID/images/:imageId                    | Get one image    |
+| Update    | PUT    | /api/shoes/:shoeID/images/:imageId                    | Update one image |
+| Delete    | DELETE | /api/shoes/:shoeID/images/:imageId                    | Delete an image  |
