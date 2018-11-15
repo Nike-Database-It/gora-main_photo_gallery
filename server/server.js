@@ -17,7 +17,7 @@ app.use(morgan('dev'));
 app.use(compression());
 
 // SERVER METHODS //
-app.get('/:shoeID/images', ({ params }, res) => {
+app.get('/api/shoes/:shoeID/images', ({ params }, res) => {
   const id = params.shoeID;
   const shoeID = id.substring(1, id.length);
   Shoe.find({ shoeID }, (err, shoe) => {
@@ -28,11 +28,53 @@ app.get('/:shoeID/images', ({ params }, res) => {
   });
 });
 
-app.route('/api/shoes/:shoeID/images')
-  .post(Controllers.Images.create)
-  .get(Controllers.Images.read)
-  .put(Controllers.Images.update)
-  .delete(Controllers.Images.delete);
+app.post('/api/shoes/:shoeID/images', (req, res) => {
+	const id = req.params.shoeID;
+	const shoeID = id.substring(1, id.length);
+
+	let imageUrl = req.body;
+
+	Shoe.update(
+	    { shoeID }, 
+	    {$push: { imageUrls: imageUrl }},
+	    (err, result) => {
+	    	if (err) throw err;
+	    	res.end();
+  		}
+	);
+});
+
+app.get('/api/shoes/:shoeID/images/:imageID', ({ params }, res) => {
+	const shoeID = params.shoeID.substring(1, id.length);
+	const imageID = params.imageID;
+
+	Shoe.find({ shoeID.imageUrls : { imageID } }, (err, result) => {
+		if (err) throw err;
+		res.end();
+	});
+});
+
+app.put('/api/shoes/:shoeID/images/:imageID', ({ params }, res) => {
+	const shoeID = params.shoeID.substring(1, id.length);
+	const imageID = params.imageID;
+
+	let imageUrl = req.body;
+
+	Shoe.findOneAndUpdate({ shoeID, shoeID.imageUrls : imageID }, { imageUrl }, (err, result) => {
+		if (err) throw err;
+		res.end();
+	})
+});
+
+app.delete('/api/shoes/:shoeID/images/:imageID', ({ params }, res) => {
+	const shoeID = params.shoeID.substring(1, id.length);
+	const imageID = params.imageID;
+
+	Shoe.deleteOne({ shoeID, shoeID.imageUrls : imageID }, (err, result) => {
+		if (err) throw err;
+		res.end();
+	})
+})
 
 // APP LISTENING PROTOCOL
 const PORT = process.env.PORT || 3005;

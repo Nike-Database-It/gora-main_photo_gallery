@@ -65,6 +65,6 @@ npm start
 |-----------|--------|-------------------------------------------------------|------------------|
 | Create    | POST   | /api/shoes/:shoeID/images                             | Insert new image |
 | Read(All) | GET    | /api/shoes/:shoeID/images                             | Get all images   |
-| Read(One) | GET    | /api/shoes/:shoeID/images/:imageId                    | Get one image    |
-| Update    | PUT    | /api/shoes/:shoeID/images/:imageId                    | Update one image |
-| Delete    | DELETE | /api/shoes/:shoeID/images/:imageId                    | Delete an image  |
+| Read(One) | GET    | /api/shoes/:shoeID/images/:imageID                    | Get one image    |
+| Update    | PUT    | /api/shoes/:shoeID/images/:imageID                    | Update one image |
+| Delete    | DELETE | /api/shoes/:shoeID/images/:imageID                    | Delete an image  |
