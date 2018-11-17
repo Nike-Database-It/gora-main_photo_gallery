@@ -3,11 +3,12 @@ DROP DATABASE IF EXISTS nike;
 CREATE DATABASE nike;
 \connect nike;
 
-DROP TABLE IF EXISTS shoe;
+DROP TABLE IF EXISTS image;
 
-CREATE TABLE shoe (
-  shoeID VARCHAR(60) PRIMARY KEY,
-  imageUrls VARCHAR[]
+CREATE TABLE image (
+  id SERIAL PRIMARY KEY,
+  shoeID INT NOT NULL,
+  url VARCHAR(200)
 );
 
-COPY shoe FROM 'C:/Users/caram/Desktop/records.csv' DELIMITERS ',' CSV;
+COPY image(shoeID, url) FROM 'C:/Users/caram/Desktop/gora-main_photo_gallery/shoes.csv' DELIMITERS ',' CSV;
