@@ -185,4 +185,4 @@ const seed = (callback = () => { mongoose.connection.close(); }) => {
   });
 };
 
-module.exports = seed;
+module.exports = shoeLinks;
