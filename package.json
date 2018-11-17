@@ -8,7 +8,8 @@
     "watch": "webpack -d --watch",
     "build": "webpack -p",
     "start": "node server/server.js",
-    "seed": "node -e 'require(\"./db/seeder.js\")()'",
+    "db:init": "psql < db/schema.sql",
+    "db:seed": "node --max-old-space-size=6144 db/seeder2.js",
     "lint": "eslint --ignore-path .gitignore . --fix"
   },
   "repository": {
@@ -32,11 +33,15 @@
     "bluebird": "^3.5.2",
     "body-parser": "^1.18.3",
     "compression": "^1.7.3",
+    "csv-stringify": "^4.3.1",
     "express": "^4.16.4",
+    "faker": "^4.1.0",
+    "knex": "^0.15.2",
     "merge": "^1.2.1",
     "mongoose": "^5.3.6",
     "morgan": "^1.9.1",
     "path": "^0.12.7",
+    "pg": "^7.6.1",
     "prop-types": "^15.6.2",
     "react": "^16.6.0",
     "react-dom": "^16.6.0"
