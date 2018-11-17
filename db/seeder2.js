@@ -4,8 +4,6 @@ const faker = require('faker');
 
 const stringify = require('csv-stringify');
 
-const shoeLinks = require('./seeder.js');
-
 // function generateShoe() {
 //   const imageUrls = [];
 
@@ -19,10 +17,11 @@ const shoeLinks = require('./seeder.js');
 //   };
 // }
 
-const records = 6000000;
+const records = 10000000;
 
 const options = { flags: 'a' };
 const imageCSV = fs.createWriteStream('shoes.csv', options);
+//const imageCSV = process.stdout;
 
 const imageUrls = [
   'https://s3-us-west-1.amazonaws.com/nike-shoe-image-catalog/Air+Jordan+1+Mid/Black-Black-Dark+Grey/shoe_1.jpg',
@@ -34,10 +33,11 @@ const imageUrls = [
 ];
 
 
-var i = 5000001;
+var i = 0;
+var ok = true;
 
 function write() {
-  while (i <= records) {
+  while (i < records && ok) {
     let shoeId = i;
     let nOfImage = Math.floor(5 + (Math.random() * 5));
     for (let j = 0; j < nOfImage; j++) {
@@ -46,20 +46,26 @@ function write() {
         url: imageUrls[Math.floor(Math.random() * 6)],
       }
       let row = `${Object.values(imageObj).join(',')}\n`;
-      if (!imageCSV.write(row)) {
-        return;
-      };
+
+      ok = imageCSV.write(row);
     }
     i += 1;
   }
-  imageCSV.end();
-  console.log('seeded a million records');
+
+  if ( i < records) {
+    ok = true;
+    imageCSV.once('drain', () => write());
+  } else {
+    imageCSV.end();
+    console.log('seeded a million records');
+  }
 }
 
-imageCSV.on('drain', () => {
-  write();
-})
 write();
+// imageCSV.on('drain', () => {
+//   write();
+// })
+// write();
 
 
 // function generateCSV(count, shoes) {
