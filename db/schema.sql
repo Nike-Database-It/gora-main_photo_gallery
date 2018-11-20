@@ -11,4 +11,4 @@ CREATE TABLE image (
   url VARCHAR(200)
 );
 
-COPY image(shoeID, url) FROM 'C:/Users/caram/Desktop/gora-main_photo_gallery/shoes.csv' DELIMITERS ',' CSV;
+COPY image(shoeID, url) FROM '/home/gora/Documents/gora-main_photo_gallery/shoes.csv' DELIMITERS ',' CSV;

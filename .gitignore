@@ -11,4 +11,4 @@ public/mpg_bundle.js
 # TEST COVERAGE INFORMATION
 coverage
 
-.csv
+*.csv

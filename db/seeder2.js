@@ -2,24 +2,10 @@ const fs = require('fs');
 
 const faker = require('faker');
 
-const stringify = require('csv-stringify');
-
-// function generateShoe() {
-//   const imageUrls = [];
-
-//   for (let i = 0; i < 10; i += 1) {
-//     imageUrls.push(faker.random.arrayElement(shoeLinks[faker.random.number(shoeLinks.length)]));
-//   }
-
-//   return {
-//     shoeID: `${faker.random.number({ min: 100000, max: 999999 })}-${faker.random.number({ min: 100, max: 999 })}`,
-//     imageUrls,
-//   };
-// }
-
 const records = 10000000;
 
 const options = { flags: 'a' };
+
 const imageCSV = fs.createWriteStream('shoes.csv', options);
 //const imageCSV = process.stdout;
 
@@ -62,23 +48,3 @@ function write() {
 }
 
 write();
-// imageCSV.on('drain', () => {
-//   write();
-// })
-// write();
-
-
-// function generateCSV(count, shoes) {
-//   stringify(shoes, { header: true, columns }, (err, output) => {
-//   if (err) {
-//     console.log(err);
-//   }
-
-//   fs.writeFile(`records${count}.csv`, output, (error) => {
-//     if (error) {
-//       console.log(error);
-//     }
-//     console.log('successfully generated csv');
-//   });
-//   }
-// };
