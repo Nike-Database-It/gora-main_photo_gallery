@@ -20,9 +20,10 @@ class Gallery extends React.Component {
       .catch((err) => {
         console.log(err);
       })
-      .then(data => data.data[0])
-      .then(({ imageUrls }) => {
+      .then(data => data.data)
+      .then((imageUrls) => {
         const imgs = imageUrls;
+        console.log(imgs);
         const newState = {
           shoeID,
           images: imgs,
@@ -30,7 +31,7 @@ class Gallery extends React.Component {
         const shoeImages = [];
         let temp = [];
         for (let i = 0; i < imageUrls.length; i += 1) {
-          temp.push(imageUrls[i]);
+          temp.push(imageUrls[i].url);
           if (i % 2 !== 0 || i === imageUrls.length - 1) {
             shoeImages.push(temp);
             temp = [];

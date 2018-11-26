@@ -5,7 +5,6 @@ const morgan = require('morgan');
 const compression = require('compression');
 const path = require('path');
 
-const Controllers = require('./controllers');
 const Shoe = require('../db/Shoe.js');
 
 const app = express();
@@ -16,21 +15,46 @@ app.use(parser.json());
 app.use(morgan('dev'));
 app.use(compression());
 
+const { Client } = require('pg');
+
+const client = new Client({
+  user: 'postgres',
+  database: 'nike',
+  password: 'gora93',
+  host: 'localhost',
+  port: "5432",
+})
+
+client.connect();
+
 // SERVER METHODS //
-app.get('/api/shoes/:shoeID/images', ({ params }, res) => {
-  const id = params.shoeID;
-  const shoeID = id.substring(1, id.length);
-  Shoe.find({ shoeID }, (err, shoe) => {
-    if (err) {
-      console.log(err);
-    }
-    res.send(shoe);
-  });
+app.get('/:shoeID/images', ({ params }, res) => {
+  const shoeID = params.shoeID.slice(1);
+  const query = {
+  	text: 'SELECT * FROM image WHERE shoeID = $1',
+  	values: [shoeID],
+  };
+
+  console.log(shoeID);
+  client.query(query)
+  	.then((resp) => {
+  		// console.log(resp.rows);
+  		res.send(resp.rows);
+  	})
+  	.catch((err) => {
+  		console.log(err);
+  	})
+  // Shoe.find({ shoeID }, (err, shoe) => {
+  //   if (err) {
+  //     console.log(err);
+  //   }
+  //   res.send(shoe);
+  // });
 });
 
 app.post('/api/shoes/:shoeID/images', (req, res) => {
 	const id = req.params.shoeID;
-	const shoeID = id.substring(1, id.length);
+	// const shMETHODS //
 
 	let imageUrl = req.body;
 
@@ -48,10 +72,10 @@ app.get('/api/shoes/:shoeID/images/:imageID', ({ params }, res) => {
 	const shoeID = params.shoeID.substring(1, id.length);
 	const imageID = params.imageID;
 
-	Shoe.find({ shoeID.imageUrls : { imageID } }, (err, result) => {
-		if (err) throw err;
-		res.end();
-	});
+//	Shoe.find({ shoeID.imageUrls : { imageID } }, (err, result) => {
+		//if (err) throw err;
+		// res.end();
+//	});
 });
 
 app.put('/api/shoes/:shoeID/images/:imageID', ({ params }, res) => {
@@ -60,20 +84,20 @@ app.put('/api/shoes/:shoeID/images/:imageID', ({ params }, res) => {
 
 	let imageUrl = req.body;
 
-	Shoe.findOneAndUpdate({ shoeID, shoeID.imageUrls : imageID }, { imageUrl }, (err, result) => {
-		if (err) throw err;
-		res.end();
-	})
+	// Shoe.findOneAndUpdate({ shoeID, shoeID.imageUrls : imageID }, { imageUrl }, (err, result) => {
+	// 	if (err) throw err;
+	// 	res.end();
+	// })
 });
 
 app.delete('/api/shoes/:shoeID/images/:imageID', ({ params }, res) => {
 	const shoeID = params.shoeID.substring(1, id.length);
 	const imageID = params.imageID;
 
-	Shoe.deleteOne({ shoeID, shoeID.imageUrls : imageID }, (err, result) => {
-		if (err) throw err;
-		res.end();
-	})
+	// Shoe.deleteOne({ shoeID, shoeID.imageUrls : imageID }, (err, result) => {
+	// 	if (err) throw err;
+	// 	res.end();
+	// })
 })
 
 // APP LISTENING PROTOCOL
