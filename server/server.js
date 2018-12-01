@@ -1,3 +1,5 @@
+require('newrelic');
+
 const express = require('express');
 
 const parser = require('body-parser');
@@ -5,7 +7,7 @@ const morgan = require('morgan');
 const compression = require('compression');
 const path = require('path');
 
-const Shoe = require('../db/Shoe.js');
+//const Shoe = require('../db/Shoe.js');
 
 const app = express();
 
@@ -20,8 +22,7 @@ const { Client } = require('pg');
 const client = new Client({
   user: 'postgres',
   database: 'nike',
-  password: 'gora93',
-  host: 'localhost',
+  host: 'ec2-54-219-162-194.us-west-1.compute.amazonaws.com',
   port: "5432",
 })
 
@@ -44,12 +45,6 @@ app.get('/:shoeID/images', ({ params }, res) => {
   	.catch((err) => {
   		console.log(err);
   	})
-  // Shoe.find({ shoeID }, (err, shoe) => {
-  //   if (err) {
-  //     console.log(err);
-  //   }
-  //   res.send(shoe);
-  // });
 });
 
 app.post('/api/shoes/:shoeID/images', (req, res) => {
@@ -58,14 +53,14 @@ app.post('/api/shoes/:shoeID/images', (req, res) => {
 
 	let imageUrl = req.body;
 
-	Shoe.update(
-	    { shoeID }, 
-	    {$push: { imageUrls: imageUrl }},
-	    (err, result) => {
-	    	if (err) throw err;
-	    	res.end();
-  		}
-	);
+	// Shoe.update(
+	//     { shoeID }, 
+	//     {$push: { imageUrls: imageUrl }},
+	//     (err, result) => {
+	//     	if (err) throw err;
+	//     	res.end();
+ //  		}
+	// );
 });
 
 app.get('/api/shoes/:shoeID/images/:imageID', ({ params }, res) => {
