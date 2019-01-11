@@ -18,13 +18,11 @@
 
 ## Usage
 
-> Created by Vignesh Balasundaram
-
-> All rights reserved. Liscence: ISC
-
-> Install the npm dependencies and seed the database before building webpack bundle
-
-> Runs on server port 3005
+> Download, install and run all the related project services, then run the following command:
+```sh
+npm run react-dev
+npm start
+```
 
 ## Requirements
 
